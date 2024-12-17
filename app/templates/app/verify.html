@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify</title>
+    <link rel="stylesheet" href="{% static 'app/css/verify.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href=" {% static 'app/images/favicon.png' %}"
+    />
+  </head>
+
+  <style></style>
+  <body>
+    <div class="otp-container">
+      <!-- <i class='bx bx-x close-btn'></i> -->
+      <header>Nhập mã OTP</header>
+      <p>Vui lòng kiểm tra số điện thoại +84 xx xxx xx xx để đăng nhập</p>
+
+      <div class="otp-input">
+        <input type="number" name="otp_verify" style="width: 100%;"
+        oninput="this.value = this.value.slice(0, 4)" min="0" max="9999"
+        pattern="[0-9]*" onkeydown="if(event.key === 'ArrowUp' || event.key ===
+        'ArrowDown') event.preventDefault();" {% comment %} //ngăn không cho
+        thay đổi giá trị mặc định khi click mũi tên lên xuống {% endcomment %}
+        onwheel="event.preventDefault();" > {% comment %} ngăn thay đổi khi lăn
+        chuột {% endcomment %}
+      </div>
+
+      <div class="resend-timer">
+        <span class="resend-link">Gửi lại mã OTP</span>
+      </div>
+
+      <button class="continue-btn" onclick="submitOTP()">Tiếp tục</button>
+    </div>
+  </body>
+</html>
